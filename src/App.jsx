@@ -1,14 +1,15 @@
 import React from 'react';
 
-import './App.css';
+import './App.scss';
 
 export const App = () => (
-  <div className="App">
+  <div className="app">
     hackathon
     <ul>
+      <li>Maria</li>
       <li>Anatolii</li>
-      <li>Andrii</li>
       <li>Yaroslav</li>
+      <li>Andrii</li>
     </ul>
   </div>
 );
