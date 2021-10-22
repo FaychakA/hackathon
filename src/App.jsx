@@ -11,6 +11,7 @@ export const App = () => {
             <li>Andrii</li>
             <li>Yaroslav</li>
         </ul>
+        Andrii cann't deploy
     </div>
   );
 }
