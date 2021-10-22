@@ -5,5 +5,9 @@
       "ignoreAtRules": ["function", "if", "each", "include", "mixin", "forward", "use"]
     }],
     "no-descending-specificity": null
-  }
+  },
+  "ignoreFiles": [
+    "**/*.js",
+    "**/*.jsx"
+  ]
 }
