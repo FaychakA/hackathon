@@ -76,6 +76,7 @@ export const App = () => {
           <Switch>
             {routing.map((it) => (
               <Route
+                key={it.path}
                 path={it.path}
                 exact={it.exact}
                 component={it.component}
