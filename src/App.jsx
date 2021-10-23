@@ -85,9 +85,9 @@ export const App = () => {
 
   return (
     <>
-      <Header />
       <Container className="app__container" fluid>
         <BrowserRouter>
+          <Header />
           <Switch>
             {routing.map(({
               path, exact, component, type,
