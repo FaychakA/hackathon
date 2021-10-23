@@ -35,7 +35,6 @@ export const readData = (field, id) => new Promise((res) => {
 export const writeData = (field, id, payload) => {
   // eslint-disable-next-line no-param-reassign
   payload.updateAt = Date.now();
-  console.log('payload', payload);
   const db = getDatabase();
   set(ref(db, `${field}/${id}`), payload);
 };
