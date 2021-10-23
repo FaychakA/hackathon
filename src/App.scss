@@ -1,7 +1,21 @@
+html {
+  height: calc(100% - 56px);
+}
+
+body,
+#root {
+  height: 100%;
+}
+
+#root {
+  background-color: #0d1117;
+}
+
 .app {
   text-align: center;
 }
 
 .app__container {
+  height: 100%;
   margin-top: 56px;
 }

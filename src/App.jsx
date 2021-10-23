@@ -84,25 +84,23 @@ export const App = () => {
   }, []);
 
   return (
-    <>
-      <Container className="app__container" fluid>
-        <BrowserRouter>
-          <Header />
-          <Switch>
-            {routing.map(({
-              path, exact, component, type,
-            }) => (
-              <Auth
-                key={path}
-                path={path}
-                exact={exact}
-                component={component}
-                type={type}
-              />
-            ))}
-          </Switch>
-        </BrowserRouter>
-      </Container>
-    </>
+    <Container className="app__container">
+      <BrowserRouter>
+        <Header />
+        <Switch>
+          {routing.map(({
+            path, exact, component, type,
+          }) => (
+            <Auth
+              key={path}
+              path={path}
+              exact={exact}
+              component={component}
+              type={type}
+            />
+          ))}
+        </Switch>
+      </BrowserRouter>
+    </Container>
   );
 };
