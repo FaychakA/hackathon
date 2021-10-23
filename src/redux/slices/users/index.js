@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchUserThunk, loginUserThunk } from './asyncThunks';
+import { fetchUsersIdsThunk, fetchUserThunk, loginUserThunk } from './asyncThunks';
 
 const localStorageData = JSON.parse(localStorage.getItem('userInfo'));
 
@@ -13,9 +13,11 @@ export const UserSlice = createSlice({
     role: '',
     isLogged: localStorageData?.isLogged || false,
     users: {},
+    allIds: [],
   },
   extraReducers: {
     [loginUserThunk.fulfilled]: (state, { payload: { isLogged, login, isCheckOut } }) => {
+      // eslint-disable-next-line no-param-reassign
       state.isLogged = isLogged;
 
       if (isCheckOut) {
@@ -25,6 +27,11 @@ export const UserSlice = createSlice({
     [fetchUserThunk.fulfilled]: (state, { payload, meta }) => {
       // eslint-disable-next-line no-param-reassign
       state.users[meta.arg] = { ...payload };
+    },
+    [fetchUsersIdsThunk.fulfilled]: (state, { payload }) => {
+      console.log('payload Ids', payload);
+      // eslint-disable-next-line no-param-reassign
+      state.allIds = [...payload];
     },
   },
 });

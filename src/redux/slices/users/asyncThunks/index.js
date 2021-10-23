@@ -30,3 +30,11 @@ export const fetchUserThunk = createAsyncThunk(
     return response;
   },
 );
+
+export const fetchUsersIdsThunk = createAsyncThunk(
+  'users/fetchUsersIds',
+  async () => {
+    const response = await readData('users', '');
+    return Object.keys(response);
+  },
+);
