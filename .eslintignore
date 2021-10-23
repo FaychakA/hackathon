@@ -1,3 +1,6 @@
 /build
 /node_modules
 App.test.js
+/.github
+/.husky
+/public
