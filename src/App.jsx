@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Route, Switch, BrowserRouter } from 'react-router-dom';
-import { readData } from './utils/firebase';
+import { Switch, BrowserRouter } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 
-import { loginUserThunk } from './redux/slices/users/assyncThunks';
+import { createNewPost, fetchPostsList } from './redux/slices/posts/asyncThunks';
+import { createNewComment } from './redux/slices/comments/asyncThunks';
 
 import './App.scss';
 
@@ -14,77 +15,94 @@ import User from './pages/User';
 import Users from './pages/Users';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
+import { Header } from './components/Header';
+import { Auth } from './components/Auth';
 
 const routing = [
   {
     path: '/post/:id',
     component: Post,
     isExact: true,
+    type: 'private',
   },
   {
     path: '/posts',
     component: Posts,
     isExact: true,
+    type: 'private',
   },
   {
     path: '/user/:id',
     component: User,
     isExact: true,
+    type: 'private',
   },
   {
     path: '/users',
     component: Users,
     isExact: true,
+    type: 'private',
   },
   {
     path: '/login',
     component: Login,
     isExact: true,
+    type: 'public',
   },
   {
     path: '/registration',
     component: Registration,
     isExact: true,
+    type: 'public',
   },
   {
     path: '/',
     component: Home,
     isExact: true,
+    type: 'private',
   },
 ];
 
 export const App = () => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    readData('users', 'pokhylko').then((res) => console.log(res));
-    dispatch(loginUserThunk({
-      login: 'pokhylko',
-      password: 123456,
-    })).then((res) => console.log(res));
 
-    dispatch(loginUserThunk()).then((res) => console.log(res));
+  useEffect(() => {
+    dispatch(createNewPost({
+      postId: '123',
+      content: 'Hello world',
+    }));
+
+    dispatch(createNewComment({
+      commentData: {
+        commentId: '1234',
+        content: 'Hello world!!!',
+      },
+      postId: '123',
+    }));
+
+    dispatch(fetchPostsList()).then((res) => console.log('fetchPostsList', res));
   }, []);
 
   return (
     <>
-      <div>
-        <p>Header</p>
-      </div>
-      <div className="wrapper">
-        <div>Navigation</div>
+      <Container className="app__container" fluid>
         <BrowserRouter>
+          <Header />
           <Switch>
-            {routing.map((it) => (
-              <Route
-                key={it.path}
-                path={it.path}
-                exact={it.exact}
-                component={it.component}
+            {routing.map(({
+              path, exact, component, type,
+            }) => (
+              <Auth
+                key={path}
+                path={path}
+                exact={exact}
+                component={component}
+                type={type}
               />
             ))}
           </Switch>
         </BrowserRouter>
-      </div>
+      </Container>
     </>
   );
 };

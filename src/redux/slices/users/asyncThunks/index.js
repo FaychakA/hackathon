@@ -3,9 +3,14 @@ import { readData, writeData } from '../../../../utils/firebase';
 
 export const loginUserThunk = createAsyncThunk(
   'auth/login/loginUser',
-  async ({ login, password }) => {
+  async ({ login, password, isCheckOut }) => {
     const response = await readData('users', login);
-    return response.password === password;
+
+    return {
+      isLogged: response.password === password,
+      login,
+      isCheckOut,
+    };
   },
 );
 

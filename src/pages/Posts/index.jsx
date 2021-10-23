@@ -2,75 +2,8 @@ import { React, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Pagination } from 'react-bootstrap';
 import './index.scss';
-
-const posts = [
-  {
-    id: 1,
-  },
-  {
-    id: 2,
-  },
-  {
-    id: 3,
-  },
-  {
-    id: 4,
-  },
-  {
-    id: 5,
-  },
-  {
-    id: 6,
-  },
-  {
-    id: 7,
-  },
-  {
-    id: 8,
-  },
-  {
-    id: 9,
-  },
-  {
-    id: 10,
-  },
-  {
-    id: 11,
-  },
-  {
-    id: 12,
-  },
-  {
-    id: 13,
-  },
-  {
-    id: 14,
-  },
-  {
-    id: 15,
-  },
-  {
-    id: 16,
-  },
-  {
-    id: 17,
-  },
-  {
-    id: 18,
-  },
-  {
-    id: 19,
-  },
-  {
-    id: 20,
-  },
-  {
-    id: 21,
-  },
-  {
-    id: 22,
-  },
-];
+import Post from '../Post';
+import { posts } from '../../testData/post.json';
 
 const Posts = () => {
   const postsPerPage = 8;
@@ -83,21 +16,10 @@ const Posts = () => {
   return (
     <div>
       <h1>Here you can see Posts</h1>
-      <Row sm={{ cols: 2 }} md={{ cols: 4 }} className="justify-content-md-center" style={{ margin: '0 auto', maxWidth: 1200, width: '100%' }}>
+      <Row style={{ marginTop: '56px' }} xs={1} md={2} lg={3}>
         {[...posts.slice(currentPage * postsPerPage - postsPerPage, currentPage * postsPerPage)]
-          .map((it) => (
-            <Col style={{ marginBottom: 10 }}>
-              <div
-                key={it.id}
-                style={{
-                  width: 200, height: 200, background: 'pink', margin: '0 auto',
-                }}
-              >
-                <Link to="/post/123">
-                  <span>{it.id}</span>
-                </Link>
-              </div>
-            </Col>
+          .map((post) => (
+            <Col key={post.id} className="mb-4"><Link className="posts__link" to={`/post/${post.id}`}><Post postId={post.id} /></Link></Col>
           ))}
       </Row>
       <Row>
