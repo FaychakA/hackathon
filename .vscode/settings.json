@@ -1,5 +1,0 @@
-{
-    "prettier.requireConfig": true,
-    "files.eol": "\n",
-    "editor.formatOnSave": true,
-}
