@@ -2,11 +2,12 @@ import React from 'react';
 import {
   Container, Nav, Navbar, NavDropdown,
 } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 export const Header = () => (
   <Navbar fixed="top" variant="dark" bg="dark" expand="lg">
     <Container fluid>
-      <Navbar.Brand href="/">Logo</Navbar.Brand>
+      <Navbar.Brand as={Link} to="/">Logo</Navbar.Brand>
       <Navbar.Toggle aria-controls="navbarScroll" />
       <Navbar.Collapse id="navbarScroll">
         <Nav
@@ -14,15 +15,15 @@ export const Header = () => (
           style={{ maxHeight: '100px' }}
           navbarScroll
         >
-          <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/posts">Posts</Nav.Link>
-          <Nav.Link href="/users">Users</Nav.Link>
+          <Nav.Link as={Link} to="/">Home</Nav.Link>
+          <Nav.Link as={Link} to="/posts">Posts</Nav.Link>
+          <Nav.Link as={Link} to="/users">Users</Nav.Link>
         </Nav>
 
         <Nav>
           <NavDropdown title="Profile" id="collasible-nav-dropdown" align="end">
-            <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
-            <NavDropdown.Item href="/log-out">Log out</NavDropdown.Item>
+            <NavDropdown.Item as={Link} to="/profile">Profile</NavDropdown.Item>
+            <NavDropdown.Item as={Link} to="/log-out">Log out</NavDropdown.Item>
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>
