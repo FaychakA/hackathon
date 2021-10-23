@@ -6,16 +6,23 @@ import {
   Col, Container, Row,
 } from 'react-bootstrap';
 import { fetchUserThunk } from '../../redux/slices/users/asyncThunks';
+import { changeBanStatus } from '../../redux/slices/users';
 
 const User = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const { users } = useSelector((state) => state.user);
+  const { users, bannedUsers, login } = useSelector((state) => state.user);
+  console.log('state', useSelector((state) => state));
 
   // fetch user
   useEffect(() => {
     dispatch(fetchUserThunk(id));
+    dispatch(fetchUserThunk(login));
   }, []);
+
+  const handleChangeBanStatus = () => {
+    dispatch(changeBanStatus(id));
+  };
 
   return (
     <div>
@@ -36,6 +43,15 @@ const User = () => {
               {users[id]?.bio && <Col>{`Bio: ${users[id].bio || ''}`}</Col>}
             </Row>
           </Col>
+          {users[login]?.role === 'admin' && users[id]?.role !== 'admin' && (
+          <Col>
+            {bannedUsers.includes(id) ? (
+              <button type="button" onClick={handleChangeBanStatus}>Unban user</button>
+            ) : (
+              <button type="button" onClick={handleChangeBanStatus}>Ban user</button>
+            )}
+          </Col>
+          )}
         </Row>
       </Container>
     </div>

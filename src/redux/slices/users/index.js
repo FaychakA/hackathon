@@ -14,14 +14,28 @@ export const UserSlice = createSlice({
     isLogged: localStorageData?.isLogged || false,
     users: {},
     allIds: [],
+    bannedUsers: [],
+  },
+  reducers: {
+    changeBanStatus: (state, { payload }) => {
+      if (state.bannedUsers.includes(payload)) {
+        // eslint-disable-next-line no-param-reassign
+        state.bannedUsers = state.bannedUsers.filter((id) => id !== payload);
+      } else {
+        // eslint-disable-next-line no-param-reassign
+        state.bannedUsers.push(payload);
+      }
+    },
   },
   extraReducers: {
     [loginUserThunk.fulfilled]: (state, { payload: { isLogged, login, isCheckOut } }) => {
-      // eslint-disable-next-line no-param-reassign
-      state.isLogged = isLogged;
+      if (!state.bannedUsers.includes(login)) {
+        // eslint-disable-next-line no-param-reassign
+        state.isLogged = isLogged;
 
-      if (isCheckOut) {
-        localStorage.setItem('userInfo', JSON.stringify({ login, isLogged }));
+        if (isCheckOut) {
+          localStorage.setItem('userInfo', JSON.stringify({ login, isLogged }));
+        }
       }
     },
     [fetchUserThunk.fulfilled]: (state, { payload, meta }) => {
@@ -29,11 +43,12 @@ export const UserSlice = createSlice({
       state.users[meta.arg] = { ...payload };
     },
     [fetchUsersIdsThunk.fulfilled]: (state, { payload }) => {
-      console.log('payload Ids', payload);
       // eslint-disable-next-line no-param-reassign
       state.allIds = [...payload];
     },
   },
 });
+
+export const { changeBanStatus } = UserSlice.actions;
 
 export default UserSlice.reducer;

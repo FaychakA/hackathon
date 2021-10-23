@@ -10,6 +10,7 @@ import { fetchUsersIdsThunk } from '../../redux/slices/users/asyncThunks';
 const Users = () => {
   const dispatch = useDispatch();
   const { allIds } = useSelector((state) => state.user);
+
   // fetch user
   useEffect(() => {
     dispatch(fetchUsersIdsThunk(''));
