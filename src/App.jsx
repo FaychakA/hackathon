@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import { readData } from './utils/firebase';
 
-import { loginUserThunk } from './redux/slices/users/assyncThunks';
-import { createNewPost, fetchPostsList } from './redux/slices/posts/asyncThunk';
-import { createNewComment } from './redux/slices/comments/asyncThunk';
+import { loginUserThunk } from './redux/slices/users/asyncThunks';
+import { createNewPost, fetchPostsList } from './redux/slices/posts/asyncThunks';
+import { createNewComment } from './redux/slices/comments/asyncThunks';
 
 import './App.scss';
 
