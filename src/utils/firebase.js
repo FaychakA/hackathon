@@ -1,5 +1,8 @@
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
+import {
+  getDatabase, ref, set, onValue,
+} from 'firebase/database';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -19,3 +22,17 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const analytics = getAnalytics(app);
+
+export const readData = (field, id) => new Promise((res) => {
+  const db = getDatabase();
+  const starCountRef = ref(db, `${field}/${id}`);
+  onValue(starCountRef, (snapshot) => {
+    const data = snapshot.val();
+    res(data);
+  });
+});
+
+export const writeData = (field, id, payload) => {
+  const db = getDatabase();
+  set(ref(db, `${field}/${id}`), payload);
+};
