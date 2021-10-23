@@ -17,6 +17,16 @@ export const loginUserThunk = createAsyncThunk(
 export const registerUserThunk = createAsyncThunk(
   'register/registerUser',
   async (userData) => {
+    // eslint-disable-next-line no-param-reassign
+    userData.role = 'user';
     writeData('users', userData.login, userData);
+  },
+);
+
+export const fetchUserThunk = createAsyncThunk(
+  'users/fetchUser',
+  async (login) => {
+    const response = await readData('users', login);
+    return response;
   },
 );
