@@ -1,13 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { loginUserThunk } from './asyncThunks';
 
 export const UserSlice = createSlice({
   name: 'users',
   initialState: {
-    user: {
-      login: '',
-      name: '',
-      password: '',
-      profilePic: '',
+    login: '',
+    name: '',
+    password: '',
+    profilePic: '',
+    role: '',
+    logged: false,
+  },
+  extraReducers: {
+    [loginUserThunk.fulfilled]: (state, { payload }) => {
+      // eslint-disable-next-line no-param-reassign
+      state.logged = payload;
     },
   },
 });
