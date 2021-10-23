@@ -1,32 +1,30 @@
+import { useDispatch } from 'react-redux';
 import React, { useState } from 'react';
 import {
-  Button, Form, Row, Col,
+  Button, Col, Form, Row,
 } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
-import { loginUserThunk } from '../../redux/slices/users/asyncThunks';
+import { registerUserThunk } from '../../redux/slices/users/asyncThunks';
 
 import './index.scss';
 
-export const Login = () => {
+export const SignUp = () => {
   const dispatch = useDispatch();
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
-  const [isCheckOut, setIsCheckout] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(loginUserThunk({
+    dispatch(registerUserThunk({
       login,
       password,
-      isCheckOut,
     }));
   };
 
   return (
-    <Row className="sign-in">
+    <Row className="sign-up">
       <Col md={{ span: 4, offset: 4 }}>
-        <Form className="sign-in__form">
+        <Form className="sign-up__form">
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Login</Form.Label>
             <Form.Control
@@ -44,14 +42,6 @@ export const Login = () => {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check
-              type="checkbox"
-              label="Check me out"
-              checked={isCheckOut}
-              onChange={(e) => setIsCheckout(e.target.checked)}
             />
           </Form.Group>
           <Button variant="primary" type="submit" onClick={onSubmit}>

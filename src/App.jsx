@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Switch, BrowserRouter } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 
-import { createNewPost, fetchPostsList } from './redux/slices/posts/asyncThunks';
+import { fetchPostsList } from './redux/slices/posts/asyncThunks';
 import { createNewComment } from './redux/slices/comments/asyncThunks';
 
 import './App.scss';
@@ -13,8 +13,8 @@ import Posts from './pages/Posts';
 import Post from './pages/Post';
 import User from './pages/User';
 import Users from './pages/Users';
-import Login from './pages/Login';
-import Registration from './pages/Registration';
+import { Login } from './pages/Login';
+import { SignUp } from './pages/SignUp';
 import { Header } from './components/Header';
 import { Auth } from './components/Auth';
 
@@ -50,8 +50,8 @@ const routing = [
     type: 'public',
   },
   {
-    path: '/registration',
-    component: Registration,
+    path: '/sign-up',
+    component: SignUp,
     isExact: true,
     type: 'public',
   },
@@ -67,11 +67,6 @@ export const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(createNewPost({
-      postId: '123',
-      content: 'Hello world',
-    }));
-
     dispatch(createNewComment({
       commentData: {
         commentId: '1234',
