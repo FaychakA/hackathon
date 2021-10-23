@@ -16,6 +16,7 @@ import User from './pages/User';
 import Users from './pages/Users';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
+import { Header } from './components/Header';
 
 const routing = [
   {
@@ -82,9 +83,7 @@ export const App = () => {
 
   return (
     <>
-      <div>
-        <p>Header</p>
-      </div>
+      <Header />
       <div className="wrapper">
         <div>Navigation</div>
         <BrowserRouter>
