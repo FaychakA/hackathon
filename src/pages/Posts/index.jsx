@@ -16,7 +16,7 @@ const Posts = () => {
   return (
     <div>
       <h1>Here you can see Posts</h1>
-      <Row style={{ marginTop: '56px' }} xs={1} md={2} lg={3}>
+      <Row xs={1} md={2} lg={3}>
         {[...posts.slice(currentPage * postsPerPage - postsPerPage, currentPage * postsPerPage)]
           .map((post) => (
             <Col key={post.id} className="mb-4"><Link className="posts__link" to={`/post/${post.id}`}><Post postId={post.id} /></Link></Col>
