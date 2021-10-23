@@ -13,13 +13,11 @@ export const fetchPostsList = createAsyncThunk(
   async () => {
     let response = await readData('posts', '');
     response = Object.values(response);
-    console.log('response1', response);
     response = response.map((post) => {
       // eslint-disable-next-line no-param-reassign
       post.comments = Object.values(post?.comments);
       return post;
     });
-    console.log('response2', response);
     return response;
   },
 );

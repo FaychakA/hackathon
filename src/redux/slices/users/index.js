@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { loginUserThunk } from './asyncThunks';
+import { fetchUserThunk, loginUserThunk } from './asyncThunks';
 
 const localStorageData = JSON.parse(localStorage.getItem('userInfo'));
 
@@ -12,6 +12,7 @@ export const UserSlice = createSlice({
     profilePic: '',
     role: '',
     isLogged: localStorageData?.isLogged || false,
+    users: {},
   },
   extraReducers: {
     [loginUserThunk.fulfilled]: (state, { payload: { isLogged, login, isCheckOut } }) => {
@@ -20,6 +21,10 @@ export const UserSlice = createSlice({
       if (isCheckOut) {
         localStorage.setItem('userInfo', JSON.stringify({ login, isLogged }));
       }
+    },
+    [fetchUserThunk.fulfilled]: (state, { payload, meta }) => {
+      // eslint-disable-next-line no-param-reassign
+      state.users[meta.arg] = { ...payload };
     },
   },
 });
