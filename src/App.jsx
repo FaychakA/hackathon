@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
 import { readData } from './utils/firebase';
 
 import { loginUserThunk } from './redux/slices/users/assyncThunks';
@@ -85,8 +86,7 @@ export const App = () => {
       <div>
         <p>Header</p>
       </div>
-      <div className="wrapper">
-        <div>Navigation</div>
+      <Container>
         <BrowserRouter>
           <Switch>
             {routing.map((it) => (
@@ -98,7 +98,7 @@ export const App = () => {
             ))}
           </Switch>
         </BrowserRouter>
-      </div>
+      </Container>
     </>
   );
 };
