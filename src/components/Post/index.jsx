@@ -33,6 +33,14 @@ const Post = ({ postId, isVisibleContent }) => {
             <h2>{currentPost?.title}</h2>
             {isVisibleContent && <Card.Text>{currentPost?.content}</Card.Text>}
           </Card.Body>
+          <Card.Footer>
+            <Card.Text style={{ fontSize: 12, margin: 0 }}>
+              {new Date(currentPost?.updatedAt).toLocaleDateString(navigator.language)}
+            </Card.Text>
+            <Card.Text style={{ fontSize: 12, margin: 0 }}>
+              {new Date(currentPost?.updatedAt).toLocaleTimeString(navigator.language)}
+            </Card.Text>
+          </Card.Footer>
         </Card>
       </Link>
     </div>
