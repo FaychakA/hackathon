@@ -1,6 +1,11 @@
 {
 	"addPost": {
-		"submitButton": "Отправить"
+		"header": "Здесь вы можете добавить пост",
+		"submitButton": "Отправить",
+		"title": "Заголовок",
+		"titlePlaceHolder": "Ввести заголовок",
+		"text": "Текст поста",
+		"textPlaceholder": "Ваш пост"
 	},
 	"header": {
 		"links": {
@@ -12,6 +17,16 @@
 		},
 		"dropdown": {
 			"profile": "Профиль"
+		}
+	},
+	"posts": {
+		"header":"Здесь вы увидите посты",
+		"search": "Поиск...",
+		"select": {
+			"byNew": "От новейшего к старшему",
+			"obyOld": "От старшего к новейшему",
+			"alphabet": "По алфавиту",
+			"alphabetReverse": "Обратно алфавиту"
 		}
 	}
 }

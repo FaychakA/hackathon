@@ -84,21 +84,21 @@ const Posts = () => {
   return (
     <Row>
       <Form onSubmit={(e) => handleAddPost(e)} style={{ borderBottom: '2px solid #eee', paddingBottom: 50 }}>
-        <h2>Here you can add new post</h2>
+        <h2>{t('addPost.header')}</h2>
         <Form.Group className="mb-3" controlId="formTitle">
-          <Form.Label>Title</Form.Label>
+          <Form.Label>{t('addPost.title')}</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter title"
+            placeholder={t('addPost.titlePlaceHolder')}
             value={form.title}
             onChange={(e) => setForm({ ...form, title: e.target.value })}
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formContent">
-          <Form.Label>Text</Form.Label>
+          <Form.Label>{t('addPost.text')}</Form.Label>
           <Form.Control
             as="textarea"
-            placeholder="Your post"
+            placeholder={t('addPost.textPlaceholder')}
             style={{ height: '100px' }}
             value={form.content}
             onChange={(e) => setForm({ ...form, content: e.target.value })}
@@ -115,12 +115,12 @@ const Posts = () => {
         </Button>
       </Form>
       <div>
-        <h1>Here you can see Posts</h1>
+        <h1>{t('posts.header')}</h1>
         <Form>
           <Form.Group className="mb-3" controlId="formTitle">
             <Form.Control
               type="text"
-              placeholder="Search..."
+              placeholder={t('posts.search')}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
@@ -128,10 +128,10 @@ const Posts = () => {
           <Row style={{ width: 400 }} className="py-5">
             <Col>
               <Form.Select aria-label="Sort posts" value={sort} onChange={(e) => setSort(e.target.value)}>
-                <option value="age">From newest to latest</option>
-                <option value="age-reverse">From latest to newest</option>
-                <option value="abc">From a to z</option>
-                <option value="abc-reverse">From z to a</option>
+                <option value="age">{t('posts.select.byNew')}</option>
+                <option value="age-reverse">{t('posts.select.byOld')}</option>
+                <option value="abc">{t('posts.select.alphabet')}</option>
+                <option value="abc-reverse">{t('posts.select.alphabetReverse')}</option>
               </Form.Select>
             </Col>
           </Row>
