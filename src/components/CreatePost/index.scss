@@ -1,12 +1,12 @@
 @use "../../styles" as *;
 
 .create-post {
-  border: 15px solid $second-color;
+  border: 15px solid $main-color;
   border-radius: 15px;
   padding: 30px;
   margin-bottom: 30px;
   box-shadow: $main-box-shadow;
-  background-color: #fff;
+  background-color: #fefffe;
 }
 
 .create-post__buttons {

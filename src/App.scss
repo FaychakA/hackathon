@@ -32,9 +32,13 @@ a,
 }
 
 @media (hover: hover) {
-  a:hover,
-  .dropdown-item:hover {
+  a:hover {
     color: $second-color !important;
+  }
+
+  .dropdown-item:focus, .dropdown-item:hover {
+    color: $second-color !important;
+    background-color: $bg-color !important;
   }
 }
 

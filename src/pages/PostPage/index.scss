@@ -14,12 +14,15 @@
 .post-page__comment {
   display: flex;
   gap: 20px;
+  border: 15px solid $second-color;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: $main-box-shadow;
 }
 
 .post-page__comment-content {
-  width: 100%;
-  background: #fff;
-  border-radius: 5px;
+  color: $main-color !important;
+  font-size: 22px;
 }
 
 .post-page__user-info {
@@ -28,9 +31,31 @@
   gap: 10px;
 }
 
+.post-page__user-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  border: 10px solid $main-color;
+}
+
 .post-page__user-name {
+  color: $second-color;
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
   line-height: 23px;
+}
+
+.post-page__border {
+  border: 15px solid $main-color;
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: $main-box-shadow;
+  display: grid;
+  gap: 15px;
+
+  &--form {
+    background-color: $text-color;
+  }
 }
