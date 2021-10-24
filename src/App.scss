@@ -26,13 +26,13 @@ h3 {
 }
 
 a {
-  text-decoration: none;
-  color: unset;
+  color: $main-color !important;
+  text-decoration: none !important;
 }
 
 @media (hover: hover) {
   a:hover {
-    color: $main-color;
+    color: $second-color !important;
   }
 }
 
@@ -67,6 +67,11 @@ html {
 
 .app {
   text-align: center;
+}
+
+p,
+p:hover {
+  color: #727472 !important;
 }
 
 .app__container {

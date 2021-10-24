@@ -1,6 +1,18 @@
 @use '../../styles' as *;
 
+.users__wrap {
+  height: 100%;
+}
+
+.users__inner {
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .users__avatar {
+  width: 300px;
+  height: 300px;
   border-radius: 100%;
   border: 15px solid $main-color;
   object-fit: cover;
@@ -8,4 +20,5 @@
 
 .users__name {
   text-align: center;
+  margin-top: 30px;
 }
