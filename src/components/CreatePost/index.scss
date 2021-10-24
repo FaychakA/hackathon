@@ -1,0 +1,14 @@
+@use "../../styles" as *;
+
+.create-post {
+  border: 15px solid $second-color;
+  border-radius: 15px;
+  padding: 30px;
+  margin: 0 15px 30px;
+  box-shadow: $main-box-shadow;
+}
+
+.create-post__buttons {
+  display: flex;
+  gap: 15px;
+}

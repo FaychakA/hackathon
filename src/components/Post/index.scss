@@ -39,6 +39,9 @@
   border: none;
   z-index: 99;
   box-shadow: $main-box-shadow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   svg {
     color: $bg-color;
