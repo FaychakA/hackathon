@@ -42,10 +42,6 @@
     ]
   },
   "lint-staged": {
-    "*.{css,scss}": [
-      "stylelint",
-      "git add"
-    ],
     "*.{js,jsx}": [
       "eslint",
       "git add"
