@@ -1,6 +1,23 @@
 @use "../../styles" as *;
 
+.post-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .post-page__button {
   margin-bottom: 15px;
   width: 100%;
+}
+
+.post-page__comment {
+  display: flex;
+  gap: 20px;
+}
+
+.post-page__comment-content {
+  width: 100%;
+  background: #fff;
+  border-radius: 5px;
 }
