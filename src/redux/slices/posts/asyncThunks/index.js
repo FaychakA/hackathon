@@ -11,12 +11,8 @@ export const createNewPost = createAsyncThunk(
 export const fetchPostsList = createAsyncThunk(
   'posts/fetchPostsList',
   async () => {
-    let response = await readData('posts', '');
-    response = Object.values(response);
-    response = response.map((post) => {
-      post.comments = Object.values(post?.comments);
-      return post;
-    });
+    const response = await readData('posts', '');
+
     return response;
   },
 );
@@ -25,6 +21,7 @@ export const fetchPost = createAsyncThunk(
   'posts/fetchPost',
   async (postId) => {
     const response = await readData('posts', postId);
+
     return response;
   },
 );

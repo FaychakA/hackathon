@@ -9,7 +9,7 @@ import { posts } from '../../testData/post.json';
 
 import './index.scss';
 
-const Post = ({ postId }) => {
+const Post = ({ postId, isVisibleContent }) => {
   const { id } = useParams();
   const { title, content, postPic } = posts.find((post) => post.id === (id || postId));
   const history = useHistory();
@@ -25,8 +25,8 @@ const Post = ({ postId }) => {
       <Card className={cn({ 'post--single': id })}>
         <Card.Img variant="top" src={postPic} />
         <Card.Body>
-          <Card.Title>{title}</Card.Title>
-          <Card.Text>{content}</Card.Text>
+          <h2>{title}</h2>
+          {isVisibleContent && <Card.Text>{content}</Card.Text>}
         </Card.Body>
       </Card>
     </div>
@@ -35,6 +35,11 @@ const Post = ({ postId }) => {
 
 export default Post;
 
+Post.defaultProps = {
+  isVisibleContent: true,
+};
+
 Post.propTypes = {
   postId: PropTypes.string.isRequired,
+  isVisibleContent: PropTypes.bool,
 };

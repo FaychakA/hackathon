@@ -50,7 +50,7 @@ img {
 }
 
 html {
-  height: calc(100% - 100px);
+  min-height: calc(100% - 100px);
 }
 
 #root {
@@ -61,6 +61,10 @@ html {
   background-color: #303464 !important;
 }
 
+.card {
+  width: 100%;
+}
+
 .app {
   text-align: center;
 }
@@ -69,4 +73,5 @@ html {
   min-height: 100%;
   height: 100%;
   margin-top: 100px;
+  margin-bottom: 100px;
 }
