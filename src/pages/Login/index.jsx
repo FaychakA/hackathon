@@ -3,7 +3,8 @@ import {
   Button, Form, Row, Col,
 } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { loginUserThunk } from '../../redux/slices/users/asyncThunks';
+
+import { loginUserThunk } from '../../redux/slices/user/asyncThunks';
 
 import './index.scss';
 

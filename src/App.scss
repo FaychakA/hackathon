@@ -1,14 +1,64 @@
-html {
-  height: calc(100% - 56px);
+@use './styles' as *;
+/* stylelint-disable no-invalid-position-at-import-rule */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Squada+One&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
-body,
+body {
+  height: 100%;
+  font-family: $main-font !important;
+  margin: 0 !important;
+  color: $text-color;
+  background-color: $bg-color !important;
+}
+
+h1,
+h2,
+h3 {
+  font-family: $second-font !important;
+  color: $main-color;
+  text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+@media (hover: hover) {
+  a:hover {
+    color: $main-color;
+  }
+}
+
+button,
+input {
+  outline: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+img {
+  max-width: 100% !important;
+}
+
+html {
+  height: calc(100% - 100px);
+}
+
 #root {
   height: 100%;
 }
 
-#root {
-  background-color: #0d1117;
+.navbar.bg-dark {
+  background-color: #303464 !important;
 }
 
 .app {
@@ -16,6 +66,7 @@ body,
 }
 
 .app__container {
+  min-height: 100%;
   height: 100%;
-  margin-top: 56px;
+  margin-top: 100px;
 }

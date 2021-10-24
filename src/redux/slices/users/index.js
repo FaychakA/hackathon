@@ -1,54 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchUsersIdsThunk, fetchUserThunk, loginUserThunk } from './asyncThunks';
+import { fetchUsersIdsThunk, fetchUserThunk } from './asyncThunks';
 
-const localStorageData = JSON.parse(localStorage.getItem('userInfo'));
-
-export const UserSlice = createSlice({
+export const UsersSlice = createSlice({
   name: 'users',
   initialState: {
-    login: localStorageData?.login || '',
-    name: '',
-    password: '',
-    profilePic: '',
-    role: '',
-    isLogged: localStorageData?.isLogged || false,
-    users: {},
+    byId: {},
     allIds: [],
-    bannedUsers: [],
-  },
-  reducers: {
-    changeBanStatus: (state, { payload }) => {
-      if (state.bannedUsers.includes(payload)) {
-        // eslint-disable-next-line no-param-reassign
-        state.bannedUsers = state.bannedUsers.filter((id) => id !== payload);
-      } else {
-        // eslint-disable-next-line no-param-reassign
-        state.bannedUsers.push(payload);
-      }
-    },
   },
   extraReducers: {
-    [loginUserThunk.fulfilled]: (state, { payload: { isLogged, login, isCheckOut } }) => {
-      if (!state.bannedUsers.includes(login)) {
-        // eslint-disable-next-line no-param-reassign
-        state.isLogged = isLogged;
-
-        if (isCheckOut) {
-          localStorage.setItem('userInfo', JSON.stringify({ login, isLogged }));
-        }
-      }
-    },
     [fetchUserThunk.fulfilled]: (state, { payload, meta }) => {
-      // eslint-disable-next-line no-param-reassign
-      state.users[meta.arg] = { ...payload };
+      state.byId[meta.arg] = { ...payload };
     },
     [fetchUsersIdsThunk.fulfilled]: (state, { payload }) => {
-      // eslint-disable-next-line no-param-reassign
-      state.allIds = [...payload];
+      state.byId = payload;
+      state.allIds = Object.keys(payload);
     },
   },
 });
 
-export const { changeBanStatus } = UserSlice.actions;
+export const { changeBanStatus } = UsersSlice.actions;
 
-export default UserSlice.reducer;
+export default UsersSlice.reducer;
