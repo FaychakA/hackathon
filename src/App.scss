@@ -98,10 +98,12 @@ form label {
 }
 
 .btn.btn-primary {
-  color: $bg-color;
-  background-color: $main-color;
+  color: $bg-color !important;
+  background-color: $main-color !important;
+  border: none !important;
+  box-shadow: $main-box-shadow;
 
-  &:hover {
+  &:hover, &:active {
     color: $second-color;
     background-color: $main-color;
   }

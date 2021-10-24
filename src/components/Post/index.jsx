@@ -21,7 +21,7 @@ const Post = ({ postId, isVisibleContent }) => {
 
   return (
     <div className="post">
-      {currentPost?.createBy === login && (
+      {currentPost?.createdBy === login && (
       <button className="post__delete" type="button" onClick={deletePost}>
         <FaTrash />
       </button>
