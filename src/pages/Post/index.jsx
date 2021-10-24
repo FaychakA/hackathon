@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, useHistory } from 'react-router';
 import Card from 'react-bootstrap/Card';
 import cn from 'classnames';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { posts } from '../../testData/post.json';
+import { fetchPost } from '../../redux/slices/posts/asyncThunks';
 
 import './index.scss';
 
 const Post = ({ postId, isVisibleContent }) => {
   const { id } = useParams();
-  const { title, content, postPic } = posts.find((post) => post.id === (id || postId));
   const history = useHistory();
+  const dispatch = useDispatch();
+  const requiredPostId = (id || postId);
+  const { byId: postsById } = useSelector((state) => state.posts);
+
+  useEffect(() => {
+    if (id) {
+      dispatch(fetchPost(id));
+    }
+  }, []);
 
   return (
     <div className="post">
@@ -22,11 +31,11 @@ const Post = ({ postId, isVisibleContent }) => {
       </div>
       )}
 
-      <Card className={cn({ 'post--single': id })}>
-        <Card.Img variant="top" src={postPic} />
+      <Card className={cn('post__item', { 'post__item--single': id })}>
+        <Card.Img variant="top" src={postsById[requiredPostId]?.postPic} />
         <Card.Body>
-          <h2>{title}</h2>
-          {isVisibleContent && <Card.Text>{content}</Card.Text>}
+          <h2>{postsById[requiredPostId]?.title}</h2>
+          {isVisibleContent && <Card.Text>{postsById[requiredPostId]?.content}</Card.Text>}
         </Card.Body>
       </Card>
     </div>
