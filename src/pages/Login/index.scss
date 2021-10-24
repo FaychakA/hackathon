@@ -14,6 +14,10 @@
   border: 15px solid $main-color;
   margin-top: 150px;
   margin-bottom: 30px;
+
+  label {
+    color: #727472 !important;
+  }
 }
 
 .sign-in__switch {
