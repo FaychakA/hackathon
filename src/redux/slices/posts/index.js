@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchPostsList, fetchPost, removePost } from './asyncThunks';
+import { createNewComment } from '../comments/asyncThunks';
 
 export const PostsSlice = createSlice({
   name: 'posts',
@@ -21,6 +22,10 @@ export const PostsSlice = createSlice({
 
       delete state.byId[payload];
       state.allIds = filterPosts;
+    },
+    [createNewComment.fulfilled]: (state, { payload }) => {
+      state.byId[payload.postId]
+        .comments[payload.commentData.commentId] = { ...payload.commentData };
     },
   },
 });

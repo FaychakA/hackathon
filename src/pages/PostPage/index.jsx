@@ -44,9 +44,7 @@ const PostPage = ({ postId }) => {
         ...form,
       },
       postId: id,
-    })).then(() => {
-      dispatch(fetchPost(id));
-    });
+    }));
     setForm({ ...formInit, commentId: uuidv4() });
   };
 
@@ -59,6 +57,7 @@ const PostPage = ({ postId }) => {
       )}
 
       <Post postId={requiredPostId} />
+
       <Row>
         <Form onSubmit={(e) => handleAddComment(e)}>
           <h2>Here you can add new comment</h2>
@@ -78,7 +77,7 @@ const PostPage = ({ postId }) => {
       </Row>
 
       {posts.byId[id]?.comments && Object.keys(posts.byId[id]?.comments).length > 0
-      && Object.keys(posts.byId[id]?.comments).map((commentId) => (
+      && Object.keys(posts.byId[id]?.comments).reverse().map((commentId) => (
         <div className="post-page__comment" key={commentId}>
           <div className="post-page__user-info">
             <div>
