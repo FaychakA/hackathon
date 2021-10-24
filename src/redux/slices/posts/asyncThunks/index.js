@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { readData, writeData } from '../../../../utils/firebase';
+import { readData, writeData, removeData } from '../../../../utils/firebase';
 
 export const createNewPost = createAsyncThunk(
   'posts/createPost',
@@ -12,6 +12,15 @@ export const fetchPostsList = createAsyncThunk(
   'posts/fetchPostsList',
   async () => {
     const response = await readData('posts', '');
+    return response;
+  },
+);
+
+export const removePost = createAsyncThunk(
+  'posts/removePost',
+  async (postId) => {
+    const response = await removeData('posts', postId);
+
     return response;
   },
 );

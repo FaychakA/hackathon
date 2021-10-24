@@ -1,4 +1,4 @@
-import Post from '../pages/Post';
+import PostPage from '../pages/PostPage';
 import Posts from '../pages/Posts';
 import User from '../pages/User';
 import Users from '../pages/Users';
@@ -10,7 +10,7 @@ import Home from '../pages/Home';
 export const ROUTES = [
   {
     path: '/post/:id',
-    component: Post,
+    component: PostPage,
     isExact: true,
     type: 'private',
   },

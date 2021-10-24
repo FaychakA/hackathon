@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import {
-  getDatabase, ref, set, onValue,
+  getDatabase, ref, set, onValue, remove,
 } from 'firebase/database';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -36,4 +36,10 @@ export const writeData = (field, id, payload) => {
   payload.updateAt = Date.now();
   const db = getDatabase();
   set(ref(db, `${field}/${id}`), payload);
+};
+
+export const removeData = (field, id, payload) => {
+  const db = getDatabase();
+
+  remove(ref(db, `${field}/${id}`), payload);
 };

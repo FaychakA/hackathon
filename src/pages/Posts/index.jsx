@@ -6,7 +6,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
-import Post from '../Post';
+import Post from '../../components/Post';
 
 import './index.scss';
 
