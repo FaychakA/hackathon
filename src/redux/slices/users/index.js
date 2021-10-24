@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import { fetchUsersIdsThunk, fetchUserThunk } from './asyncThunks';
+import { registerUserThunk } from '../user/asyncThunks';
 
 export const UsersSlice = createSlice({
   name: 'users',
@@ -15,9 +17,12 @@ export const UsersSlice = createSlice({
       state.byId = payload;
       state.allIds = Object.keys(payload);
     },
+    [registerUserThunk.fulfilled]: (state, { payload }) => {
+      state.byId[payload.login] = {
+        ...payload,
+      };
+    },
   },
 });
-
-export const { changeBanStatus } = UsersSlice.actions;
 
 export default UsersSlice.reducer;

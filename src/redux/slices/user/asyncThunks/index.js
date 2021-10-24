@@ -17,7 +17,10 @@ export const loginUserThunk = createAsyncThunk(
 export const registerUserThunk = createAsyncThunk(
   'register/registerUser',
   async (userData) => {
-    userData.role = 'user';
+    if (!userData?.role) {
+      userData.role = 'user';
+    }
     writeData('users', userData.login, userData);
+    return userData;
   },
 );
