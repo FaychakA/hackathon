@@ -1,0 +1,22 @@
+{
+	"addPost": {
+		"header": "Here you can add new post",
+		"submitButton": "Submit",
+		"title": "Title",
+		"titlePlaceHolder": "Enter title",
+		"text": "Text",
+		"textPlaceholder": "Your post"
+	},
+	"header": {
+		"links": {
+			"home": "Home",
+			"posts": "Posts",
+			"users": "Users",
+			"profile": "Profile",
+			"logOut": "Log out"
+		},
+		"dropdown": {
+			"profile": "Profile"
+		}
+	}
+}
