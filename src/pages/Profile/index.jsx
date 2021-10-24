@@ -4,6 +4,7 @@ import {
   Button,
   Col, Form, Row,
 } from 'react-bootstrap';
+import { useTranslation } from 'react-i18next';
 
 import { fetchUserThunk } from '../../redux/slices/users/asyncThunks';
 import { registerUserThunk } from '../../redux/slices/user/asyncThunks';
@@ -12,6 +13,7 @@ import './index.scss';
 
 const User = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const { login } = useSelector((state) => state.user);
   const { users } = useSelector((state) => state);
   const [isEditing, setIsEditing] = useState(false);
@@ -64,59 +66,59 @@ const User = () => {
           {isEditing ? (
             <div className="profile__border profile__border--form">
               <Form onSubmit={(e) => handleChangeProfileData(e)}>
-                <h2>Change your profile data</h2>
+                <h2>{t('profile.data')}</h2>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Name:</Form.Label>
+                  <Form.Label>{t('profile.name')}</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Please enter a name"
+                    placeholder={t('profile.namePlaceholder')}
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
                   />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label>Mail:</Form.Label>
+                  <Form.Label>{t('profile.email')}</Form.Label>
                   <Form.Control
                     type="email"
-                    placeholder="Please enter a mail"
+                    placeholder={t('profile.emailPlaceholder')}
                     value={form.mail}
                     onChange={(e) => setForm({ ...form, mail: e.target.value })}
                   />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Bio:</Form.Label>
+                  <Form.Label>{t('profile.bio')}</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Please enter a bio"
+                    placeholder={t('profile.bioPlaceholder')}
                     value={form.bio}
                     onChange={(e) => setForm({ ...form, bio: e.target.value })}
                   />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label>Password:</Form.Label>
+                  <Form.Label>{t('profile.password')}</Form.Label>
                   <Form.Control
                     type="password"
-                    placeholder="Please enter a password"
+                    placeholder={t('profile.enterPassword')}
                     onChange={(e) => setForm({ ...form, password: e.target.value })}
                   />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label>Confirm password:</Form.Label>
+                  <Form.Label>{t('profile.confirmPassword')}</Form.Label>
                   <Form.Control
                     type="password"
-                    placeholder="Please confirm new password"
+                    placeholder={t('profile.confirmPasswordPlaceholder')}
                     onChange={(e) => setForm({ ...form, confirmPassword: e.target.value })}
                   />
                 </Form.Group>
                 {isPasswordDoesNotMatch && (
-                <div className="profile__error">Password does not match</div>
+                <div className="profile__error">{t('profile.noMatch')}</div>
                 )}
                 <div className="profile__form-buttons">
                   <Button variant="primary" type="submit">
-                    Save
+                    {t('profile.save')}
                   </Button>
                   <Button variant="secondary" type="button" onClick={handleEditProfile}>
-                    Cancel
+                    {t('profile.cancel')}
                   </Button>
                 </div>
               </Form>

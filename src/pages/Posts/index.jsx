@@ -76,7 +76,7 @@ const Posts = () => {
         </Form.Group>
         <Row className="py-5">
           <Col>
-            {!isVisibleEditor && <Button onClick={onCreatePost}>Create post</Button>}
+            {!isVisibleEditor && <Button onClick={onCreatePost}>{t('addPost.createPost')}</Button>}
           </Col>
           <Col>
             <Form.Select aria-label="Sort posts" value={sort} onChange={(e) => setSort(e.target.value)}>
@@ -100,7 +100,7 @@ const Posts = () => {
           .slice(currentPage * postsPerPage - postsPerPage, currentPage * postsPerPage)]
           .map((post) => (
             <Col key={post.postId} className="mb-4"><Post postId={post.postId} /></Col>
-          )) : (<h2 className="py-5">No result</h2>)}
+          )) : (<h2 className="py-5">{t('addPost.result')}</h2>)}
       </Row>
       {showPosts.length > postsPerPage && (
       <Row>

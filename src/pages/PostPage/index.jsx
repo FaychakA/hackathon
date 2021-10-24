@@ -5,6 +5,7 @@ import { Form, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
+import { useTranslation } from 'react-i18next';
 
 import Post from '../../components/Post';
 
@@ -27,6 +28,7 @@ const PostPage = ({ postId }) => {
   const [form, setForm] = useState(formInit);
   const { login } = useSelector((state) => state.user);
   const { posts, users } = useSelector((state) => state);
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(fetchUsersIdsThunk());
@@ -61,18 +63,18 @@ const PostPage = ({ postId }) => {
       <Post postId={requiredPostId} />
       <Row>
         <Form onSubmit={(e) => handleAddComment(e)}>
-          <h2>Here you can add new comment</h2>
+          <h2>{t('post.headers')}</h2>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Comment</Form.Label>
+            <Form.Label>{t('post.comment')}</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Please enter your comment"
+              placeholder={t('post.commentPlaceholder')}
               value={form.content}
               onChange={(e) => setForm({ ...form, content: e.target.value })}
             />
           </Form.Group>
           <Button variant="primary" type="submit">
-            Submit
+            {t('post.submit')}
           </Button>
         </Form>
       </Row>
@@ -85,7 +87,7 @@ const PostPage = ({ postId }) => {
               <img srs={users.byId[posts.byId[id]?.comments[commentId].userId]?.profilePic} alt="user" />
             </div>
             <div>
-              {`Name: ${users.byId[posts.byId[id]?.comments[commentId].userId]?.name}`}
+              {`${t('post.name')}: ${users.byId[posts.byId[id]?.comments[commentId].userId]?.name}`}
             </div>
           </div>
           <div className="post-page__comment-content">

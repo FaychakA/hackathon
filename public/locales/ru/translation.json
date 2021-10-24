@@ -5,7 +5,9 @@
 		"title": "Заголовок",
 		"titlePlaceHolder": "Ввести заголовок",
 		"text": "Текст поста",
-		"textPlaceholder": "Ваш пост"
+		"textPlaceholder": "Ваш пост",
+		"createPost": "Создать пост",
+		"result": "Нет постов"
 	},
 	"header": {
 		"links": {
@@ -24,9 +26,54 @@
 		"search": "Поиск...",
 		"select": {
 			"byNew": "От новейшего к старшему",
-			"obyOld": "От старшего к новейшему",
+			"byOld": "От старшего к новейшему",
 			"alphabet": "По алфавиту",
 			"alphabetReverse": "Обратно алфавиту"
 		}
+	},
+	"login": {
+		"login": "Логин",
+		"loginPlaceholder": "Ввести логин",
+		"password": "Пароль",
+		"passwordPlaceholder": "Пароль",
+		"submit": "Подтвердить"
+	},
+	"signUp": {
+		"login": "Логин",
+		"loginPlaceholder": "Ввести логин",
+		"email": "Почта",
+		"enterEmail": "Ввести почту",
+		"name": "Имя",
+		"enterName": "Ввести имя",
+		"uploadImg": "Загрузить изображение",
+		"password": "Пароль",
+		"enterPassword": "Ввести пароль",
+		"confirmPassword": "Подтвердить пароль",
+		"confirmPasswordPlaceholder": "Ввести подтверждение пароля",
+		"submit": "Подтвердить",
+		"signIn": "ВОЙТИ"
+	},
+	"post": {
+		"header": "Здесь вы можете добавить новый комментарий",
+		"comment": "Комментарий",
+		"commentPlaceholder": "Введите новый коментарий",
+		"button": "Подтвердить",
+		"name": "Имя"
+	},
+	"profile": {
+		"data": "Изменить данные профиля",
+		"name": "Имя",
+		"namePlaceholder": "Введите имя",
+		"email": "Почта",
+		"enterEmail": "Ввести почту",
+		"bio": "Данние",
+		"bioPlaceholder": "Введите данные",
+		"password": "Пароль",
+		"enterPassword": "Ввести пароль",
+		"confirmPassword": "Подтвердить пароль",
+		"confirmPasswordPlaceholder": "Введите подтверждение пароля",
+		"noMatch": "Пароль не подходит",
+		"save": "Сохранить",
+		"cancel": "Отменить"
 	}
 }

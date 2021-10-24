@@ -5,7 +5,9 @@
 		"title": "Title",
 		"titlePlaceHolder": "Enter title",
 		"text": "Text",
-		"textPlaceholder": "Your post"
+		"textPlaceholder": "Your post",
+		"createPost": "Create post",
+		"result": "No result"
 	},
 	"header": {
 		"links": {
@@ -24,9 +26,54 @@
 		"search": "Search...",
 		"select": {
 			"byNew": "From newest to latest",
-			"obyOld": "From latest to newest",
+			"byOld": "From latest to newest",
 			"alphabet": "From a to z",
 			"alphabetReverse": "From z to a"
 		}
+	},
+	"login": {
+		"login": "Login",
+		"loginPlaceholder": "Enter login",
+		"password": "Password",
+		"passwordPlaceholder": "Password",
+		"submit": "Submit"
+	},
+	"signUp": {
+		"login": "Login",
+		"loginPlaceholder": "Enter login",
+		"email": "Email",
+		"enterEmail": "Enter email",
+		"name": "Name",
+		"enterName": "Enter name",
+		"uploadImg": "Upload image",
+		"password": "Password",
+		"enterPassword": "Enter password",
+		"confirmPassword": "Confirm password",
+		"confirmPasswordPlaceholder": "Enter confirm password",
+		"submit": "Submit",
+		"signIn": "SIGN IN"
+	},
+	"post": {
+		"header": "Here you can add new comment",
+		"comment": "Comment",
+		"commentPlaceholder": "Enter your comment",
+		"button": "Submit",
+		"name": "Name"
+	},
+	"profile": {
+		"data": "Change your profile data",
+		"name": "Name",
+		"namePlaceholder": "Please enter a name",
+		"email": "Email",
+		"enterEmail": "Enter email",
+		"bio": "Bio",
+		"bioPlaceholder": "Please enter a bio",
+		"password": "Password",
+		"enterPassword": "Enter password",
+		"confirmPassword": "Confirm password",
+		"confirmPasswordPlaceholder": "Enter confirm password",
+		"noMatch": "Password does not match",
+		"save": "Save",
+		"cancel": "Cancel"
 	}
 }

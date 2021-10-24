@@ -6,6 +6,7 @@ import {
   Button, Col, Form, Row,
 } from 'react-bootstrap';
 import FileBase64 from 'react-file-base64';
+import { useTranslation } from 'react-i18next';
 import { registerUserThunk } from '../../redux/slices/users/asyncThunks';
 
 import './index.scss';
@@ -22,6 +23,7 @@ export const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [profilePic, setprofilePic] = useState('');
   const history = useHistory();
+  const { t } = useTranslation();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -40,49 +42,49 @@ export const SignUp = () => {
       <Col md={{ span: 4, offset: 4 }}>
         <Form className="sign-up__form">
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Login</Form.Label>
+            <Form.Label>{t('signUp.login')}</Form.Label>
             <Form.Control
               className={cn({
                 'is-invalid': !login,
                 'is-valid': login,
               })}
               type="login"
-              placeholder="Enter login"
+              placeholder={t('signUp.loginPlaceholder')}
               value={login}
               onChange={(e) => setLogin(e.target.value)}
             />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email</Form.Label>
+            <Form.Label>{t('signUp.email')}</Form.Label>
             <Form.Control
               className={cn({
                 'is-invalid': !email || !pattern.test(email),
                 'is-valid': email || pattern.test(email),
               })}
               type="email"
-              placeholder="Enter email"
+              placeholder={t('signUp.enterEmail')}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Name</Form.Label>
+            <Form.Label>{t('signUp.name')}</Form.Label>
             <Form.Control
               className={cn({
                 'is-invalid': !name,
                 'is-valid': name,
               })}
               type="name"
-              placeholder="Enter name"
+              placeholder={t('signUp.enterName')}
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Upload image</Form.Label>
+            <Form.Label>{t('signUp.uploadImg')}</Form.Label>
             <FileBase64
               multiple={false}
               onDone={(e) => setprofilePic(e.base64)}
@@ -90,28 +92,28 @@ export const SignUp = () => {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
+            <Form.Label>{t('signUp.password')}</Form.Label>
             <Form.Control
               className={cn({
                 'is-invalid': !password,
                 'is-valid': password,
               })}
               type="password"
-              placeholder="Enter password"
+              placeholder={t('signUp.enterPassword')}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Confirm password</Form.Label>
+            <Form.Label>{t('signUp.confirmPassword')}</Form.Label>
             <Form.Control
               className={cn({
                 'is-invalid': !confirmPassword || password !== confirmPassword,
                 'is-valid': confirmPassword || password === confirmPassword,
               })}
               type="password"
-              placeholder="Enter confirm password"
+              placeholder={t('signUp.confirmPasswordPlaceholder')}
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
@@ -131,11 +133,11 @@ export const SignUp = () => {
               || password !== confirmPassword
 }
           >
-            Submit
+            {t('signUp.submit')}
           </Button>
           <p className="sign-up__switch">
             {'Switch to '}
-            <Link to="/sign-in">SIGN IN</Link>
+            <Link to="/sign-in">{t('signUp.signIn')}</Link>
           </p>
         </Form>
       </Col>

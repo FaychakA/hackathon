@@ -5,6 +5,7 @@ import {
 import { useDispatch } from 'react-redux';
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { loginUserThunk } from '../../redux/slices/user/asyncThunks';
 
@@ -12,6 +13,7 @@ import './index.scss';
 
 export const Login = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [isCheckOut, setIsCheckout] = useState(false);
@@ -31,28 +33,28 @@ export const Login = () => {
       <Col md={{ span: 4, offset: 4 }}>
         <Form className="sign-in__form">
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Login</Form.Label>
+            <Form.Label>{t('login.login')}</Form.Label>
             <Form.Control
               className={cn({
                 'is-invalid': !login,
                 'is-valid': login,
               })}
               type="login"
-              placeholder="Enter login"
+              placeholder={t('login.loginPlaceholder')}
               value={login}
               onChange={(e) => setLogin(e.target.value)}
             />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
+            <Form.Label>{t('login.password')}</Form.Label>
             <Form.Control
               className={cn({
                 'is-invalid': !password,
                 'is-valid': password,
               })}
               type="password"
-              placeholder="Password"
+              placeholder={t('login.passwordPlaceholder')}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -71,7 +73,7 @@ export const Login = () => {
             onClick={onSubmit}
             disabled={!login || !password}
           >
-            Submit
+            {t('login.submit')}
           </Button>
           <p className="sign-in__switch">
             {'Switch to '}
