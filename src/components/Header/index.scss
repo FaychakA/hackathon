@@ -1,3 +1,8 @@
 .header__logo {
   height: 50px;
 }
+
+.header__menu {
+  justify-content: flex-end !important;
+  margin-right: 30px;
+}

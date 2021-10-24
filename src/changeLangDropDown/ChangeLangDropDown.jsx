@@ -15,7 +15,7 @@ const ChangeLangDropDown = () => {
   }, [i18n.language]);
 
   return (
-    <DropdownButton id="dropdown-item-button" title={currentLang?.toUpperCase()}>
+    <DropdownButton id="dropdown-item-button" align="end" title={currentLang?.toUpperCase()}>
       {currentLang !== 'ru' && <Dropdown.Item onClick={() => handleLanguage('ru')} as="button">RU</Dropdown.Item>}
       {currentLang !== 'en' && <Dropdown.Item onClick={() => handleLanguage('en')} as="button">EN</Dropdown.Item>}
     </DropdownButton>

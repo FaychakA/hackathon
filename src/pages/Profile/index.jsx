@@ -58,10 +58,10 @@ const User = () => {
   return (
     <div>
       <Row>
-        <Col>{users.byId[login]?.profilePic && <img src={users.byId[login].profilePic} alt="user face" />}</Col>
+        <Col>{users.byId[login]?.profilePic && <img className="profile__avatar" src={users.byId[login].profilePic} alt="user face" />}</Col>
         <Col>
           {isEditing ? (
-            <>
+            <div className="profile__border profile__border--form">
               <Form onSubmit={(e) => handleChangeProfileData(e)}>
                 <h2>Change your profile data</h2>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -114,30 +114,30 @@ const User = () => {
                   <Button variant="primary" type="submit">
                     Save
                   </Button>
-                  <Button variant="primary" type="button" onClick={handleEditProfile}>
+                  <Button variant="secondary" type="button" onClick={handleEditProfile}>
                     Cancel
                   </Button>
                 </div>
               </Form>
-            </>
+            </div>
           ) : (
-            <>
+            <div className="profile__border">
+              <Row>
+                <Col><h1>{`Name: ${users.byId[login]?.name || ''}`}</h1></Col>
+              </Row>
+              <Row>
+                <Col><h3>{`Role: ${users.byId[login]?.role || ''}`}</h3></Col>
+              </Row>
+              <Row>
+                <Col><h3>{`Mail: ${users.byId[login]?.mail || ''}`}</h3></Col>
+              </Row>
+              <Row>
+                <Col><h3>{`Bio: ${users.byId[login]?.bio || ''}`}</h3></Col>
+              </Row>
               <Button variant="primary" type="button" onClick={handleEditProfile}>
                 Edit
               </Button>
-              <Row>
-                <Col>{`Name: ${users.byId[login]?.name || ''}`}</Col>
-              </Row>
-              <Row>
-                <Col>{`Role: ${users.byId[login]?.role || ''}`}</Col>
-              </Row>
-              <Row>
-                <Col>{`Mail: ${users.byId[login]?.mail || ''}`}</Col>
-              </Row>
-              <Row>
-                <Col>{`Bio: ${users.byId[login]?.bio || ''}`}</Col>
-              </Row>
-            </>
+            </div>
           )}
         </Col>
       </Row>
