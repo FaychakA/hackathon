@@ -1,38 +1,26 @@
-import React, { useEffect } from 'react';
-import { useParams, useHistory } from 'react-router';
+import React from 'react';
 import Card from 'react-bootstrap/Card';
-import cn from 'classnames';
 import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { fetchPost } from '../../redux/slices/posts/asyncThunks';
+import { removePost } from '../../redux/slices/posts/asyncThunks';
 
 import './index.scss';
 
 const Post = ({ postId, isVisibleContent }) => {
-  const { id } = useParams();
-  const history = useHistory();
   const dispatch = useDispatch();
-  const requiredPostId = (id || postId);
+  const requiredPostId = (postId);
   const { byId: postsById } = useSelector((state) => state.posts);
 
-  useEffect(() => {
-    if (id) {
-      dispatch(fetchPost(id));
-    }
-  }, []);
+  const deletePost = () => {
+    dispatch(removePost(postId));
+  };
 
   return (
     <div className="post">
-      {id && (
-      <div className="post__button">
-        <Button variant="dark" onClick={() => history.push('/posts')}>Back</Button>
-      </div>
-      )}
-
-      <Card className={cn('post__item', { 'post__item--single': id })}>
+      <Card className="post__item">
         <Card.Img variant="top" src={postsById[requiredPostId]?.postPic} />
+        <button className="post__delete" type="button" onClick={deletePost}>delete</button>
         <Card.Body>
           <h2>{postsById[requiredPostId]?.title}</h2>
           {isVisibleContent && <Card.Text>{postsById[requiredPostId]?.content}</Card.Text>}
