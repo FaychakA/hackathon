@@ -1,39 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Row, Col, Pagination, Form, Button,
 } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+
 import Post from '../Post';
-import { posts } from '../../testData/post.json';
+
 import './index.scss';
-import { createNewPost } from '../../redux/slices/posts/asyncThunks';
+
+import { createNewPost, fetchPostsList, fetchPost } from '../../redux/slices/posts/asyncThunks';
 
 const formInit = {
   title: '',
   content: '',
   postPic: '',
+  postId: uuidv4(),
 };
 
 const Posts = () => {
-  const postsPerPage = 8;
-  const totalPages = posts.length / postsPerPage;
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
   const [form, setForm] = useState(formInit);
+  const { allIds: allPostsId } = useSelector((state) => state.posts);
+  const postsPerPage = 8;
+  const totalPages = allPostsId.length / postsPerPage;
 
   const handleAddPost = (e) => {
     e.preventDefault();
     dispatch(createNewPost({
-      postId: new Date(),
+      postId: uuidv4(),
       ...form,
-    }));
-    setForm(formInit);
+    })).then(() => {
+      dispatch(fetchPost(form.postId));
+    });
+    setForm({ ...formInit, postId: uuidv4() });
   };
 
   const handlePagination = (e) => {
     setCurrentPage(e);
   };
+
+  useEffect(() => {
+    dispatch(fetchPostsList());
+  }, []);
 
   return (
     <Row>
@@ -74,9 +85,10 @@ const Posts = () => {
       <div>
         <h1>Here you can see Posts</h1>
         <Row xs={1} md={2} lg={3}>
-          {[...posts.slice(currentPage * postsPerPage - postsPerPage, currentPage * postsPerPage)]
-            .map((post) => (
-              <Col key={post.id} className="mb-4"><Link className="posts__link" to={`/post/${post.id}`}><Post postId={post.id} /></Link></Col>
+          {[...allPostsId
+            .slice(currentPage * postsPerPage - postsPerPage, currentPage * postsPerPage)]
+            .map((postId) => (
+              <Col key={postId} className="mb-4"><Link className="posts__link" to={`/post/${postId}`}><Post postId={postId} /></Link></Col>
             ))}
         </Row>
         <Row>

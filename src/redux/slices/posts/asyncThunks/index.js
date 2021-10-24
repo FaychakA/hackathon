@@ -12,7 +12,6 @@ export const fetchPostsList = createAsyncThunk(
   'posts/fetchPostsList',
   async () => {
     const response = await readData('posts', '');
-
     return response;
   },
 );
@@ -23,5 +22,16 @@ export const fetchPost = createAsyncThunk(
     const response = await readData('posts', postId);
 
     return response;
+  },
+  {
+    condition: (postId, { getState }) => {
+      const { byId } = getState().posts;
+
+      if (Object.keys(byId).includes(postId)) {
+        return false;
+      }
+
+      return true;
+    },
   },
 );

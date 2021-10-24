@@ -14,7 +14,12 @@
     width: 100%;
   }
 
-  &--single {
-    max-width: 600px;
+  &__item {
+		min-width: 400px !important;
+		min-height: 600px;
+
+		&--single {
+			max-width: 600px;
+		}
   }
 }
