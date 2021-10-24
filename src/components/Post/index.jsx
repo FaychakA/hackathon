@@ -28,7 +28,7 @@ const Post = ({ postId, isVisibleContent }) => {
       )}
       <Link className="posts__link" to={`/post/${postId}`}>
         <Card className="post__item">
-          <Card.Img style={{ height: 200, objectFit: 'cover' }} variant="top" src={currentPost?.postPic} />
+          <Card.Img style={{ objectFit: 'cover' }} variant="top" src={currentPost?.postPic} />
           <Card.Body>
             <h2>{currentPost?.title}</h2>
             {isVisibleContent && <Card.Text>{currentPost?.content}</Card.Text>}
