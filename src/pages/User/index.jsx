@@ -8,6 +8,8 @@ import {
 import { fetchUserThunk } from '../../redux/slices/users/asyncThunks';
 import { changeBanStatus } from '../../redux/slices/user';
 
+import './index.scss';
+
 const User = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -27,20 +29,22 @@ const User = () => {
   return (
     <div>
       <Row>
-        <Col>{users.byId[id]?.profilePic && <img src={users.byId[id].profilePic} alt="user face" />}</Col>
+        <Col>{users.byId[id]?.profilePic && <img className="user__avatar" src={users.byId[id].profilePic} alt="user face" />}</Col>
         <Col>
-          <Row>
-            <Col>{`Name: ${users.byId[id]?.name || ''}`}</Col>
-          </Row>
-          <Row>
-            <Col>{`Role: ${users.byId[id]?.role || ''}`}</Col>
-          </Row>
-          <Row>
-            <Col>{`Mail: ${users.byId[id]?.mail || ''}`}</Col>
-          </Row>
-          <Row>
-            {users.byId[id]?.bio && <Col>{`Bio: ${users.byId[id].bio || ''}`}</Col>}
-          </Row>
+          <div className="user__border">
+            <Row>
+              <Col><h1>{`Name: ${users.byId[id]?.name || ''}`}</h1></Col>
+            </Row>
+            <Row>
+              <Col><h3>{`Role: ${users.byId[id]?.role || ''}`}</h3></Col>
+            </Row>
+            <Row>
+              <Col><h3>{`Mail: ${users.byId[id]?.mail || ''}`}</h3></Col>
+            </Row>
+            <Row>
+              {users.byId[id]?.bio && <Col><h3>{`Bio: ${users.byId[id].bio || ''}`}</h3></Col>}
+            </Row>
+          </div>
         </Col>
         {users.byId[login]?.role === 'admin' && users.byId[id]?.role !== 'admin' && (
           <Col>

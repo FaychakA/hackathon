@@ -25,13 +25,15 @@ h3 {
   text-transform: uppercase;
 }
 
-a {
+a,
+.dropdown-item {
   color: $main-color !important;
   text-decoration: none !important;
 }
 
 @media (hover: hover) {
-  a:hover {
+  a:hover,
+  .dropdown-item:hover {
     color: $second-color !important;
   }
 }
@@ -79,6 +81,10 @@ p:hover {
   height: 100%;
   margin-top: 100px;
   margin-bottom: 100px;
+}
+
+.dropdown-menu.show.dropdown-menu-end {
+  background-color: #303464 !important;
 }
 
 .pagination {

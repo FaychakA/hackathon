@@ -29,9 +29,9 @@ export const Header = () => {
           <img className="header__logo" src={logo} alt="logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
+        <Navbar.Collapse id="navbarScroll" className="header__menu">
           <Nav
-            className="me-auto my-2 my-lg-0"
+            className="my-2 my-lg-0"
             style={{ maxHeight: '100px' }}
             navbarScroll
           >

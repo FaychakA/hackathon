@@ -11,10 +11,16 @@
   padding: 30px;
   border-radius: 30px;
   box-shadow: $main-box-shadow;
+  border: 15px solid $second-color;
+  margin-bottom: 30px;
 }
 
 .sign-in__switch {
   text-align: center;
   margin-top: 20px;
   margin-bottom: 0;
+
+  a {
+    color: $second-color !important;
+  }
 }

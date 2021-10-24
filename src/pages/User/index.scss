@@ -1,0 +1,21 @@
+@use '../../styles' as *;
+
+.user__avatar {
+  width: 500px;
+  height: 500px;
+  border-radius: 100%;
+  border: 15px solid $main-color;
+  object-fit: cover;
+}
+
+.user__name {
+  text-align: center;
+}
+
+.user__border {
+  border: 15px solid $second-color;
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: $main-box-shadow;
+}
