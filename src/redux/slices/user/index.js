@@ -7,10 +7,6 @@ export const UserSlice = createSlice({
   name: 'user',
   initialState: {
     login: localStorageData?.login || '',
-    name: '',
-    password: '',
-    profilePic: '',
-    role: '',
     isLogged: localStorageData?.isLogged || false,
     bannedUsers: [],
   },
@@ -21,6 +17,11 @@ export const UserSlice = createSlice({
       } else {
         state.bannedUsers.push(payload);
       }
+    },
+    logout: (state) => {
+      state.login = '';
+      state.isLogged = false;
+      localStorage.clear();
     },
   },
   extraReducers: {
@@ -37,6 +38,6 @@ export const UserSlice = createSlice({
   },
 });
 
-export const { changeBanStatus } = UserSlice.actions;
+export const { changeBanStatus, logout } = UserSlice.actions;
 
 export default UserSlice.reducer;
