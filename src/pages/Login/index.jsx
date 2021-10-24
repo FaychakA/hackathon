@@ -3,6 +3,8 @@ import {
   Button, Form, Row, Col,
 } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
+import cn from 'classnames';
+import { Link } from 'react-router-dom';
 
 import { loginUserThunk } from '../../redux/slices/user/asyncThunks';
 
@@ -31,6 +33,10 @@ export const Login = () => {
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Login</Form.Label>
             <Form.Control
+              className={cn({
+                'is-invalid': !login,
+                'is-valid': login,
+              })}
               type="login"
               placeholder="Enter login"
               value={login}
@@ -41,6 +47,10 @@ export const Login = () => {
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
+              className={cn({
+                'is-invalid': !password,
+                'is-valid': password,
+              })}
               type="password"
               placeholder="Password"
               value={password}
@@ -55,9 +65,18 @@ export const Login = () => {
               onChange={(e) => setIsCheckout(e.target.checked)}
             />
           </Form.Group>
-          <Button variant="primary" type="submit" onClick={onSubmit}>
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={onSubmit}
+            disabled={!login || !password}
+          >
             Submit
           </Button>
+          <p className="sign-in__switch">
+            {'Switch to '}
+            <Link to="/sign-up">SIGN UP</Link>
+          </p>
         </Form>
       </Col>
     </Row>
