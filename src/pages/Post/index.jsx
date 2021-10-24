@@ -1,4 +1,4 @@
-import { React } from 'react';
+import React from 'react';
 import { useParams, useHistory } from 'react-router';
 import Card from 'react-bootstrap/Card';
 import cn from 'classnames';

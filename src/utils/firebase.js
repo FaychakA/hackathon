@@ -23,7 +23,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const analytics = getAnalytics(app);
 
-export const readData = (field, id) => new Promise((res) => {
+export const readData = (field, id = '') => new Promise((res) => {
   const db = getDatabase();
   const starCountRef = ref(db, `${field}/${id}`);
   onValue(starCountRef, (snapshot) => {
@@ -33,7 +33,6 @@ export const readData = (field, id) => new Promise((res) => {
 });
 
 export const writeData = (field, id, payload) => {
-  // eslint-disable-next-line no-param-reassign
   payload.updateAt = Date.now();
   const db = getDatabase();
   set(ref(db, `${field}/${id}`), payload);

@@ -1,0 +1,11 @@
+@use '../../styles' as *;
+
+.users__avatar {
+  border-radius: 100%;
+  border: 15px solid $main-color;
+  object-fit: cover;
+}
+
+.users__name {
+  text-align: center;
+}

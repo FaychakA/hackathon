@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Pagination } from 'react-bootstrap';
 import './index.scss';
@@ -19,7 +19,11 @@ const Posts = () => {
       <Row xs={1} md={2} lg={3}>
         {[...posts.slice(currentPage * postsPerPage - postsPerPage, currentPage * postsPerPage)]
           .map((post) => (
-            <Col key={post.id} className="mb-4"><Link className="posts__link" to={`/post/${post.id}`}><Post postId={post.id} /></Link></Col>
+            <Col key={post.id} className="mb-4">
+              <Link className="posts__link" to={`/post/${post.id}`}>
+                <Post postId={post.id} />
+              </Link>
+            </Col>
           ))}
       </Row>
       <Row>

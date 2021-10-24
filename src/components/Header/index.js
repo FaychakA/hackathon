@@ -4,10 +4,16 @@ import {
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
+import './index.scss';
+
+import logo from '../../assets/images/logo.png';
+
 export const Header = () => (
   <Navbar fixed="top" variant="dark" bg="dark" expand="lg">
     <Container fluid>
-      <Navbar.Brand as={Link} to="/">Logo</Navbar.Brand>
+      <Navbar.Brand as={Link} to="/">
+        <img className="header__logo" src={logo} alt="logo" />
+      </Navbar.Brand>
       <Navbar.Toggle aria-controls="navbarScroll" />
       <Navbar.Collapse id="navbarScroll">
         <Nav

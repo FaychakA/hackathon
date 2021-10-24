@@ -21,20 +21,3 @@ export const registerUserThunk = createAsyncThunk(
     writeData('users', userData.login, userData);
   },
 );
-
-export const fetchUserThunk = createAsyncThunk(
-  'users/fetchUser',
-  async (login) => {
-    const response = await readData('users', login);
-    return response;
-  },
-);
-
-export const fetchUsersIdsThunk = createAsyncThunk(
-  'users/fetchUsersIds',
-  async () => {
-    const response = await readData('users');
-
-    return response;
-  },
-);

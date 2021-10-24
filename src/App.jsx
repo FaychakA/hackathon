@@ -1,101 +1,31 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import { Switch, BrowserRouter } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 
-import { fetchPostsList } from './redux/slices/posts/asyncThunks';
-import { createNewComment } from './redux/slices/comments/asyncThunks';
-
-import './App.scss';
-
-import Home from './pages/Home';
-import Posts from './pages/Posts';
-import Post from './pages/Post';
-import User from './pages/User';
-import Users from './pages/Users';
-import { Login } from './pages/Login';
-import { SignUp } from './pages/SignUp';
 import { Header } from './components/Header';
 import { Auth } from './components/Auth';
 
-const routing = [
-  {
-    path: '/post/:id',
-    component: Post,
-    isExact: true,
-    type: 'private',
-  },
-  {
-    path: '/posts',
-    component: Posts,
-    isExact: true,
-    type: 'private',
-  },
-  {
-    path: '/user/:id',
-    component: User,
-    isExact: true,
-    type: 'private',
-  },
-  {
-    path: '/users',
-    component: Users,
-    isExact: true,
-    type: 'private',
-  },
-  {
-    path: '/login',
-    component: Login,
-    isExact: true,
-    type: 'public',
-  },
-  {
-    path: '/sign-up',
-    component: SignUp,
-    isExact: true,
-    type: 'public',
-  },
-  {
-    path: '/',
-    component: Home,
-    isExact: true,
-    type: 'private',
-  },
-];
+import { ROUTES } from './constants/routes';
 
-export const App = () => {
-  const dispatch = useDispatch();
+import './App.scss';
 
-  useEffect(() => {
-    dispatch(createNewComment({
-      commentData: {
-        commentId: '1234',
-        content: 'Hello world!!!',
-      },
-      postId: '123',
-    }));
-
-    dispatch(fetchPostsList()).then((res) => console.log('fetchPostsList', res));
-  }, []);
-
-  return (
-    <Container className="app__container">
-      <BrowserRouter>
-        <Header />
-        <Switch>
-          {routing.map(({
-            path, exact, component, type,
-          }) => (
-            <Auth
-              key={path}
-              path={path}
-              exact={exact}
-              component={component}
-              type={type}
-            />
-          ))}
-        </Switch>
-      </BrowserRouter>
-    </Container>
-  );
-};
+export const App = () => (
+  <Container className="app__container">
+    <BrowserRouter>
+      <Header />
+      <Switch>
+        {ROUTES.map(({
+          path, exact, component, type,
+        }) => (
+          <Auth
+            key={path}
+            path={path}
+            exact={exact}
+            component={component}
+            type={type}
+          />
+        ))}
+      </Switch>
+    </BrowserRouter>
+  </Container>
+);
