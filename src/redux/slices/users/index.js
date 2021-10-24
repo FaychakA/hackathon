@@ -17,7 +17,7 @@ export const UsersSlice = createSlice({
       state.byId = payload;
       state.allIds = Object.keys(payload);
     },
-    [registerUserThunk.fulfilled]: (state, { payload }) => {
+    [registerUserThunk.fulfilled]: (state, payload) => {
       state.byId[payload.login] = {
         ...payload,
       };
