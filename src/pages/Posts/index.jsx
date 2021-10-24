@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import {
   Row, Col, Pagination, Form, Button,
 } from 'react-bootstrap';
@@ -88,7 +87,7 @@ const Posts = () => {
           {[...allPostsId
             .slice(currentPage * postsPerPage - postsPerPage, currentPage * postsPerPage)]
             .map((postId) => (
-              <Col key={postId} className="mb-4"><Link className="posts__link" to={`/post/${postId}`}><Post postId={postId} /></Link></Col>
+              <Col key={postId} className="mb-4"><Post postId={postId} /></Col>
             ))}
         </Row>
         <Row>
