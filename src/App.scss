@@ -1,6 +1,6 @@
-@use './styles' as *;
+@use "./styles" as *;
 /* stylelint-disable no-invalid-position-at-import-rule */
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Squada+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&family=Squada+One&display=swap");
 
 * {
   box-sizing: border-box;
@@ -74,4 +74,40 @@ html {
   height: 100%;
   margin-top: 100px;
   margin-bottom: 100px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+
+  & .page-item .page-link {
+    color: $bg-color;
+  }
+
+  & .page-item.active .page-link {
+    z-index: 3;
+    color: $bg-color;
+    background-color: $main-color;
+    border-color: $main-color;
+  }
+}
+
+form label {
+  color: $main-color;
+}
+
+.btn.btn-primary {
+  color: $bg-color;
+  background-color: $main-color;
+
+  &:hover {
+    color: $second-color;
+    background-color: $main-color;
+  }
+}
+
+.form-check.form-switch .form-check-input:checked {
+  background-color: $main-color;
+  border-color: $main-color;
 }
