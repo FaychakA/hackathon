@@ -57,6 +57,7 @@ img {
 
 html {
   min-height: calc(100% - 100px);
+  padding-bottom: 90px;
 }
 
 #root {
@@ -123,7 +124,4 @@ p:hover {
 .form-check.form-switch .form-check-input:checked {
   background-color: $main-color;
   border-color: $main-color;
-}
-body{
-  height:90vh;
 }
