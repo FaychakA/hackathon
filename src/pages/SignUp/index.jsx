@@ -1,11 +1,11 @@
 import { useDispatch } from 'react-redux';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import cn from 'classnames';
 import {
   Button, Col, Form, Row,
 } from 'react-bootstrap';
-
+import FileBase64 from 'react-file-base64';
 import { registerUserThunk } from '../../redux/slices/users/asyncThunks';
 
 import './index.scss';
@@ -20,16 +20,19 @@ export const SignUp = () => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [profilePic, setprofilePic] = useState('');
+  const history = useHistory();
 
   const onSubmit = (e) => {
     e.preventDefault();
-
     dispatch(registerUserThunk({
       login,
       email,
       name,
       password,
+      profilePic,
     }));
+    history.push('/');
   };
 
   return (
@@ -78,6 +81,14 @@ export const SignUp = () => {
             />
           </Form.Group>
 
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Upload image</Form.Label>
+            <FileBase64
+              multiple={false}
+              onDone={(e) => setprofilePic(e.base64)}
+            />
+          </Form.Group>
+
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
@@ -117,7 +128,7 @@ export const SignUp = () => {
               || !pattern.test(email)
               || !password
               || !confirmPassword
-              || password === confirmPassword
+              || password !== confirmPassword
 }
           >
             Submit
