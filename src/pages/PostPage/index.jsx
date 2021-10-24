@@ -80,11 +80,11 @@ const PostPage = ({ postId }) => {
       {posts.byId[id]?.comments && Object.keys(posts.byId[id]?.comments).length > 0
       && Object.keys(posts.byId[id]?.comments).map((commentId) => (
         <div className="post-page__comment" key={commentId}>
-          <div>
+          <div className="post-page__user-info">
             <div>
-              <img srs={users.byId[posts.byId[id]?.comments[commentId].userId]?.profilePic} alt="user" />
+              <img src={users.byId[posts.byId[id]?.comments[commentId].userId]?.profilePic} alt="user" />
             </div>
-            <div>
+            <div className="post-page__user-name">
               {`Name: ${users.byId[posts.byId[id]?.comments[commentId].userId]?.name}`}
             </div>
           </div>

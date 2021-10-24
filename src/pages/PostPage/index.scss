@@ -21,3 +21,16 @@
   background: #fff;
   border-radius: 5px;
 }
+
+.post-page__user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.post-page__user-name {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 23px;
+}
