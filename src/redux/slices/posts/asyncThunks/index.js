@@ -19,9 +19,9 @@ export const fetchPostsList = createAsyncThunk(
 export const removePost = createAsyncThunk(
   'posts/removePost',
   async (postId) => {
-    const response = await removeData('posts', postId);
+    await removeData('posts', postId);
 
-    return response;
+    return postId;
   },
 );
 
