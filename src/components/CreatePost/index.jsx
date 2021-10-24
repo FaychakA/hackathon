@@ -78,7 +78,7 @@ export const CreatePost = ({ setIsVisibleEditor }) => {
         <Button
           variant="primary"
           type="submit"
-          disabled={form.postId || form.content || form.postPic}
+          disabled={!form.postId || !form.content || !form.postPic}
         >
           Submit
         </Button>
