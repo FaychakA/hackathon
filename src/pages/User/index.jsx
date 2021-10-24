@@ -44,17 +44,17 @@ const User = () => {
             <Row>
               {users.byId[id]?.bio && <Col><h3>{`Bio: ${users.byId[id].bio || ''}`}</h3></Col>}
             </Row>
+            {users.byId[login]?.role === 'admin' && users.byId[id]?.role !== 'admin' && (
+            <Row>
+              {bannedUsers.includes(id) ? (
+                <Button onClick={handleChangeBanStatus}>Unban user</Button>
+              ) : (
+                <Button onClick={handleChangeBanStatus}>Ban user</Button>
+              )}
+            </Row>
+            )}
           </div>
         </Col>
-        {users.byId[login]?.role === 'admin' && users.byId[id]?.role !== 'admin' && (
-          <Col>
-            {bannedUsers.includes(id) ? (
-              <Button onClick={handleChangeBanStatus}>Unban user</Button>
-            ) : (
-              <Button onClick={handleChangeBanStatus}>Ban user</Button>
-            )}
-          </Col>
-        )}
       </Row>
     </div>
   );
