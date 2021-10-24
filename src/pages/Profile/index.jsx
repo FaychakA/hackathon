@@ -41,7 +41,6 @@ const User = () => {
   const handleChangeProfileData = (e) => {
     e.preventDefault();
     if (form.confirmPassword === form.password) {
-      console.log(users.byId[login], 'profile');
       dispatch(registerUserThunk({
         ...users.byId[login],
         name: form.name || users.byId[login]?.name,
