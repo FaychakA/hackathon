@@ -18,5 +18,15 @@
 		"dropdown": {
 			"profile": "Profile"
 		}
+	},
+	"posts": {
+		"header":"Here you can see Posts",
+		"search": "Search...",
+		"select": {
+			"byNew": "From newest to latest",
+			"obyOld": "From latest to newest",
+			"alphabet": "From a to z",
+			"alphabetReverse": "From z to a"
+		}
 	}
 }
