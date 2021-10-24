@@ -4,6 +4,9 @@ import {
 } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
+
+import ChangeLangDropDown from '../../changeLangDropDown/ChangeLangDropDown';
 
 import './index.scss';
 
@@ -13,8 +16,9 @@ import logo from '../../assets/images/logo.png';
 
 export const Header = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
-  const handlelLogOut = () => {
+  const handleLogOut = () => {
     dispatch(logout());
   };
 
@@ -31,18 +35,19 @@ export const Header = () => {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/posts">Posts</Nav.Link>
-            <Nav.Link as={Link} to="/users">Users</Nav.Link>
+            <Nav.Link as={Link} to="/">{t('header.links.home')}</Nav.Link>
+            <Nav.Link as={Link} to="/posts">{t('header.links.posts')}</Nav.Link>
+            <Nav.Link as={Link} to="/users">{t('header.links.users')}</Nav.Link>
           </Nav>
 
           <Nav>
-            <NavDropdown title="Profile" id="collasible-nav-dropdown" align="end">
-              <NavDropdown.Item as={Link} to="/profile">Profile</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/log-out" onClick={handlelLogOut}>Log out</NavDropdown.Item>
+            <NavDropdown title={t('header.dropdown.profile')} id="collasible-nav-dropdown" align="end">
+              <NavDropdown.Item as={Link} to="/profile">{t('header.links.profile')}</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/log-out" onClick={handleLogOut}>{t('header.links.logOut')}</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
+        <ChangeLangDropDown />
       </Container>
     </Navbar>
   );

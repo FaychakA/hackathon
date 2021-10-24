@@ -1,0 +1,17 @@
+{
+	"addPost": {
+		"submitButton": "Отправить"
+	},
+	"header": {
+		"links": {
+			"home": "Домой",
+			"posts": "Посты",
+			"users": "Юзеры",
+			"profile": "Профиль",
+			"logOut": "Выйти"
+		},
+		"dropdown": {
+			"profile": "Профиль"
+		}
+	}
+}

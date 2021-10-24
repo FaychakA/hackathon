@@ -5,7 +5,10 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import FileBase64 from 'react-file-base64';
+import { useTranslation } from 'react-i18next';
+
 import Post from '../../components/Post';
+
 import './index.scss';
 
 import { createNewPost, fetchPostsList, fetchPost } from '../../redux/slices/posts/asyncThunks';
@@ -18,6 +21,7 @@ const formInit = {
 };
 
 const Posts = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   const postsPerPage = 6;
@@ -107,7 +111,7 @@ const Posts = () => {
           />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Submit
+          {t('addPost.submitButton')}
         </Button>
       </Form>
       <div>
