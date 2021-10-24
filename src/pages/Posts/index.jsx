@@ -90,7 +90,9 @@ const Posts = () => {
       </Form>
       {isVisibleEditor && (
       <Row>
-        <CreatePost setIsVisibleEditor={setIsVisibleEditor} />
+        <Col>
+          <CreatePost setIsVisibleEditor={setIsVisibleEditor} />
+        </Col>
       </Row>
       )}
       <Row xs={1} md={2} lg={3}>
